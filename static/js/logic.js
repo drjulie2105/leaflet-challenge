@@ -28,7 +28,7 @@ function createFeatures(earthquakeData) {
 
             return L.circleMarker(latlng, geoJSONMarker);
         },
-    })
+    });
     createMap(earthquakes);
 };
 
@@ -61,7 +61,7 @@ function createMap(earthquakes) {
     };
 
     // Create map with the streetmap and earthquakes layers 
-    var myMap = L.map("mapid", {
+    var myMap = L.map("map", {
         center: [37.09, -95.71],
         zoom: 5,
         layers: [streetmap, earthquakes]
