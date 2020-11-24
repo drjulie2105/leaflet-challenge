@@ -4,7 +4,7 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 console.log(queryUrl);
 
 // Perform a request to the query URL
-d3.json(queryUrl, function (data) {
+d3.json(queryUrl, function(data) {
     createFeatures(data.features);
 });
 
@@ -61,7 +61,7 @@ function createMap(earthquakes) {
     };
 
     // Create map with the streetmap and earthquakes layers 
-    var myMap = L.map("map", {
+    var myMap = L.map("mapid", {
         center: [37.09, -95.71],
         zoom: 5,
         layers: [streetmap, earthquakes]
