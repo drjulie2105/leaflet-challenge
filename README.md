@@ -9,4 +9,4 @@
 - Create pop-ups to provide information about the earthquake
 - Create a legend
 
-![](https://github.com/drjulie2105/leaflet-challenge/blob/jp/Images/2-BasicMap.png)
+![](https://github.com/drjulie2105/leaflet-challenge/blob/jp/Screenshots/Screen%20Shot%202020-11-24%20at%203.31.53%20PM.png)
