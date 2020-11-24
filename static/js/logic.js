@@ -72,6 +72,8 @@ function createMap(earthquakes) {
         collapsed: true
     }).addTo(myMap);
 
+    // Create a legend
+
     var legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function () {
@@ -88,22 +90,25 @@ function createMap(earthquakes) {
     };
     legend.addTo(myMap);
 }
+
+// Create color based on magnitude
+
 function fillColor(mag) {
     switch (true) {
         case mag >= 5.0:
-            return '#d73027';
+            return '#8b0000';
         case mag >= 4.0:
-            return '#fc8d59';
+            return '#ff0000';
         case mag >= 3.0:
-            return '#fee08b';
+            return '#ff5349';
         case mag >= 2.0:
-            return '#d9ef8b';
+            return '#ffa500';
         case mag >= 1.0:
-            return '#91cf60';
+            return '#ffff00';
         case mag < 1.0:
-            return '#1a9850';
+            return '#9acd32';
     };
 };
 function markerSize(mag) {
-    return mag * 40
+    return mag * 50
 };
