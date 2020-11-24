@@ -4,12 +4,12 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 console.log(API_KEY);
 
 // Create basemap
-
 var myMap = L.map("mapid", {
     center: [37.09, -95.71],
     zoom: 5,
     // layers: [streetmap, earthquakes]
 });
+
 var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
@@ -57,6 +57,8 @@ function createFeatures(earthquakeData) {
                 return '#9acd32';
         };
     };
+
+    // Create marker size based on magnitude
     function markerSize(mag) {
         return mag * 10
     };
@@ -75,7 +77,6 @@ function createFeatures(earthquakeData) {
             return L.circleMarker(latlng, geoJSONMarker);
         },
     }).addTo(myMap);
-    //createMap(earthquakes);
 };
 
 function createMap(earthquakes) {
@@ -99,27 +100,19 @@ function createMap(earthquakes) {
         "Earthquakes": earthquakes
     };
 
-    // Create map with the streetmap and earthquakes layers 
-    var myMap = L.map("mapid", {
-        center: [37.09, -95.71],
-        zoom: 5,
-        layers: [streetmap, earthquakes]
-    });
-
     // Create a layer control
     L.control.layers(baseMaps, overlayMaps, {
         collapsed: true
     }).addTo(myMap);
 
     // Create a legend
-
-    var legend = L.control({ position: 'right' });
+    var legend = L.control({ position: 'top right' });
 
     legend.onAdd = function () {
         var div = L.DomUtil.create('div', 'legend'),
             magnitude = [0, 1.0, 2.0, 3.0, 4.0, 5.0],
             labels = [];
-        // loop through our magnitude intervals and generate a label with a colored square for each interval
+        // loop through our magnitude intervals and generate a label 
         div.innerHTML ='<div><b>Earthquake <br/> Magnitude</b></div';
         for (var i = 0; i < magnitude.length; i++) {
             div.innerHTML += '<i style= "background:' + fillColor(magnitude[i]) + '"></i> ' +
