@@ -60,7 +60,7 @@ function createFeatures(earthquakeData) {
 
     // Create marker size based on magnitude
     function markerSize(mag) {
-        return mag * 10
+        return mag * 8
     };
     L.geoJSON(earthquakeData, {
         onEachFeature: onEachfeature,
@@ -79,6 +79,7 @@ function createFeatures(earthquakeData) {
     }).addTo(myMap);
 };
 
+// Create earthquake layer 
 function createMap(earthquakes) {
     var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
@@ -106,7 +107,7 @@ function createMap(earthquakes) {
     }).addTo(myMap);
 
     // Create a legend
-    var legend = L.control({ position: 'top right' });
+    var legend = L.control({ position: 'topright' });
 
     legend.onAdd = function () {
         var div = L.DomUtil.create('div', 'legend'),
